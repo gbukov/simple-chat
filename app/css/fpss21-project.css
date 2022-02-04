@@ -1,0 +1,310 @@
+/* ---------------------------     General     ------------------------------ */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {height: 100%;}
+body {
+  min-height: 100%;
+  overflow: hidden;
+  /* background-image: url("bg_1.png"); */
+  font-family: Arial, Helvetica, sans-serif;
+}
+ul {list-style: none;}
+
+/* ---------------------------       Grid      ------------------------------ */
+.container {
+  height: 100vh;
+  display: grid;
+  filter: blur(3px);
+  /* overflow-y: auto; */
+  grid-template-columns: minmax(170px, 1fr) minmax(170px, 1fr) 5fr;
+  grid-template-rows: 30px 1fr 50px 30px;
+  grid-template-areas:
+    "header header header"
+    "rooms users chat"
+    "rooms users chat_input"
+    "footer footer footer";
+}
+.header {
+  grid-area: header;
+}
+.rooms {
+  grid-area: rooms;
+  overflow: auto;
+}
+.users {
+  grid-area: users;
+}
+.chat {
+  grid-area: chat;
+  overflow: auto;
+}
+.footer{
+  grid-area: footer;
+}
+
+
+/* --------------------------    List of Rooms   ---------------------------- */
+.rooms > div {
+  text-align: center;
+  padding: 1em;
+  background-color: #4f4f4f85;
+}
+.rooms > div > span {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #fff;
+}
+#rooms > li > div {
+  background-color: #ffffff4f;
+  padding: 1em 0 1em 6%;
+  border-bottom: 1px solid gray;
+  transition: background-color 500ms cubic-bezier(.39,.58,.57,1) 50ms;
+}
+#rooms > li > div:hover {
+  background-color: #CACACA;
+}
+#addNewRoom {
+  transition: background-color 500ms cubic-bezier(.39,.58,.57,1) 50ms;
+}
+#addNewRoom:hover {
+  background-color: #3E3E3E;
+}
+
+
+/* --------------------------    List of Users   ---------------------------- */
+.users > div {
+  text-align: center;
+  padding: 1em;
+  background-color: #4f4f4f85;
+}
+.users > div > span {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #fff;
+}
+#users > li > div {
+  background-color: #ffffff4f;
+  padding: 0.5em;
+  border-bottom: 1px solid gray;
+  transition: background-color 500ms cubic-bezier(.39,.58,.57,1) 50ms;
+}
+#users > li > div:hover {
+  background-color: #CACACA;
+}
+
+
+/* --------------------------   Welcome window   ---------------------------- */
+#enterName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  min-height: 6em;
+  min-width: 18em;
+  padding: 1em;
+  background-color: #d9d9d9;
+  border: 1px solid #555;
+}
+#enterName input {
+  width: 98%;
+}
+#enterName button {
+  width: 99%;
+  border-radius: 1px;
+}
+#enterName > div:nth-child(1) {
+  text-align: center;
+}
+#enterName > div:nth-child(2) {
+  text-align: center;
+  margin-top: 1.5em;
+}
+#enterName > div:nth-child(3) {
+  text-align: center;
+  margin-top: 1em;
+}
+
+
+/* --------------------------   Add room window   --------------------------- */
+#addRoom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  min-height: 6em;
+  min-width: 18em;
+  padding: 1em;
+  background-color: #d9d9d9;
+  border: 1px solid #555;
+}
+#addRoom input {
+  width: 98%;
+}
+#addRoom button {
+  width: 99%;
+  border-radius: 1px;
+}
+#addRoom > div:nth-child(1) {
+  text-align: center;
+}
+#addRoom > div:nth-child(2) {
+  text-align: center;
+  margin-top: 1.5em;
+}
+#addRoom > div:nth-child(3) {
+  text-align: center;
+  margin-top: 1em;
+}
+
+
+/* -----------------------------      Chat     ------------------------------ */
+#repl {
+  padding: 1em 0px;
+}
+.msg-general {
+  position: relative;
+  color: #000000;
+  max-width: 25%;
+  min-width: 25%;
+  padding: 0.5em;
+  margin-left: 30px;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 5px gray;
+}
+.msg-general:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  z-index: 1;
+  border-style: solid;
+  top: 30%;
+  margin-top: -9px;
+}
+.msg-general.left.normal {
+  background: #9ce392;
+}
+.msg-general.left.normal:after {
+  left: -13px;
+  border-color: transparent #9ce392;
+  border-width: 9px 15px 9px 0;
+}
+.msg-general.right.normal {
+  background: #1ebcf5;
+}
+.msg-general.right.normal:after {
+  right: -13px;
+  border-color: transparent #1ebcf5;
+  border-width: 9px 0 9px 15px;
+}
+.msg-general.left.private {
+  background: #aeaeae;
+}
+.msg-general.left.private:after {
+  left: -13px;
+  border-color: transparent #aeaeae;
+  border-width: 9px 15px 9px 0;
+}
+.msg-general.right.private {
+  background: #aeaeae;
+}
+.msg-general.right.private:after {
+  right: -13px;
+  border-color: transparent #aeaeae;
+  border-width: 9px 0 9px 15px;
+}
+.flex-right {
+  display: flex;
+  justify-content: right;
+  margin-right: 2em;
+}
+#msg-box-name {
+  font-weight: bold;
+  text-decoration: underline;
+}
+#msg-box-name > span {
+  font-size: smaller;
+  color: cornsilk;
+}
+#msg-box-date {
+  float: right;
+}
+#msg-box-room {
+  margin: 0 4px;
+  font-size: small;
+  font-style: italic;
+}
+.mleft > div:nth-child(2) {
+  margin: 8px 0 0 0;
+}
+.mright > div:nth-child(2) {
+  margin: 8px 0 0 0;
+}
+.smsg {
+  margin: 0 auto;
+  max-width: 25%;
+  text-align: center;
+  background-color: #ffdc74;
+  padding: 0.5em;
+  font-size: small;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+.chat_input > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #4f4f4f85;
+}
+#prompt {
+  width: 80%;
+  height: 40%;
+}
+
+
+/* ---------------------------      Header      ----------------------------- */
+.header {
+  background-color: #ffffff85;
+  color: #0087ff;
+}
+.header > div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 1.5em;
+}
+.header h1 {
+  font-size: unset;
+}
+/* #light {
+  text-decoration: underline;
+} */
+
+
+/* ---------------------------      Footer      ----------------------------- */
+.footer {
+  background-color: #000000c4;
+  text-align: center;
+  color: white;
+}
+.footer > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: small;
+}
+
+
+/* --------------------------    Test Bereich    ---------------------------- */
+.container > div {
+  border: 1px solid gray;
+}

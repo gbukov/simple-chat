@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>fpss21-project</title>
+  <meta name="description" content="A simple chat in HASKELL with websockets">
+  <meta name="author" content="Gleb Bukov">
+
+  <link rel="stylesheet" href="css/fpss21-project.css">
+  <script language="javascript" type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  <script language="javascript" type="text/javascript" src="js/fpss21-project.js"></script>
+</head>
+
+<body>
+
+  <div id="enterName">
+    <div>Trying to connect to a server...</div>
+    <div><input id="promptName"/></div>
+    <div><button>Join to the Chat</button></div>
+  </div>
+
+  <div id="addRoom">
+    <div>Enter a name for new room</div>
+    <div><input id="promptAddRoom"/></div>
+    <div><button>open a new room</button></div>
+  </div>
+
+  <div class="container">
+
+    <div class="header">
+      <div>
+        <h1>Simple chat: Haskell, Websockets, MySQL, JS, CSS-Grid (<a id="light">light</a>, <a id="dark">dark</a>)</h1>
+      </div>
+    </div>
+
+    <div class="rooms">
+      <div><span>List of chat rooms:</span></div>
+      <ul id="rooms"></ul>
+      <div id="newRoomBtn"><span>Add new room +</span></div>
+    </div>
+
+    <div class="users">
+      <div><span>List of users:</span></div>
+      <ul id="users"></ul>
+    </div>
+
+    <div class="chat">
+      <div>
+        <ul id="repl"></ul>
+      </div>
+
+    </div>
+
+    <div class="chat_input">
+      <div>
+        <input id="prompt"/>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>
+        HS-RM / SS21 / Funktionale Programmierung / Abschlussprojekt / Bukov, Gleb
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
